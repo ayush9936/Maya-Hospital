@@ -25,7 +25,7 @@ module.exports = mongoose;
 //         console.log("connected")
 
 //     }catch(err){
-//         console.error("error")
+//         console.error("not connected")
 //     }
     
 // }
