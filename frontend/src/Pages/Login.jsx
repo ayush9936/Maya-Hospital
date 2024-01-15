@@ -1,6 +1,35 @@
-import React from 'react'
+
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import {Link, NavLink} from 'react-router-dom'
+
 const Login = () => {
+
+const {
+  register,
+  handleSubmit,
+  
+  formState:{errors},
+}=useForm();
+
+const onSubmit= async(data)=>{
+  const api="http://hospitalapi.projectupdate.in/api/getPatientDetails";
+  var dd={
+    "email":data.email,
+    "password":data.password
+}
+
+    const response= await fetch(api);
+  
+    if(response.status==200){
+      const responseData = await response.json();
+      console.log('Login Successful',responseData);
+    }else{
+      console.log('Login failed');
+    }
+  
+}
+
   return (
     <>
  <div className="wrapper">
@@ -48,15 +77,15 @@ const Login = () => {
                   <hr />
                 </div>
                 <div className="form-body">
-                  <form className="row g-3">
+                  <form onSubmit={handleSubmit(onSubmit)} className="row g-3">
                     <div className="col-12">
                       <label htmlFor="inputEmailAddress" className="form-label">
                         Email Address
                       </label>
                       <input
-                        type="email"
+                       {...register("email")}
                         className="form-control"
-                        id="inputEmailAddress"
+                        
                         placeholder="Email Address"
                       />
                     </div>
@@ -69,9 +98,9 @@ const Login = () => {
                       </label>
                       <div className="input-group" id="show_hide_password">
                         <input
-                          type="password"
+                        {...register("password")}
                           className="form-control border-end-0"
-                          id="inputChoosePassword"
+                         
                           
                           placeholder="Enter Password"
                         />{" "}
@@ -83,34 +112,19 @@ const Login = () => {
                         </a>
                       </div>
                     </div>
-                    <div className="col-md-6">
-                      <div className="form-check form-switch">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="flexSwitchCheckChecked"
-                          defaultChecked=""
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="flexSwitchCheckChecked"
-                        >
-                          Remember Me
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-md-6 text-end">
+                   
+                    {/* <div className="col-md-6 text-end">
                     
                       <NavLink to="/forget">
                         Forgot Password ?
                       </NavLink>
-                    </div>
+                    </div> */}
                     <div className="col-12">
                       <div className="d-grid">
-                        <button type="submit" className="btn btn-primary">
-                          <i className="bx bxs-lock-open" />
-                          Sign in
-                        </button>
+                
+                          
+                       <input type="submit" className='btn btn-primary'/>
+                       {/* <i className="bx bxs-lock-open" /> */}
                       </div>
                     </div>
                   </form>

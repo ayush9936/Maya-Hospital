@@ -1,7 +1,7 @@
-import Button from './Pages/Button';
-import Card from './Pages/Card';
+import Doc from './Pages/Doc';
+import Nurse from './Pages/Nurse';
 import ForgetPwd from './Pages/ForgetPwd';
-import Grid from './Pages/Grid';
+import Ward from './Pages/Ward';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
@@ -12,21 +12,22 @@ import Text from './Pages/Text';
 import Table from './Pages/Table';
 import Blank from './Pages/Blank';
 import Error from './Pages/Error';
+import Demo from './Pages/Demo';
 
 function App() {
   return (
     <div className="App">
 
-
+{/* <Demo/> */}
 <BrowserRouter>
 <Routes>
   <Route exact path="/" element={<Home/>}/>
 <Route  path="/login" element={<Login/>}/>
   <Route  path="/signup" element={<Signup/>}/>
   <Route path="/forget" element={<ForgetPwd/>}/>
-  <Route path="/btn" element={<Button/>}/>
-  <Route path="/card" element={<Card/>}/>
-  <Route path="/grid" element={<Grid/>}/>
+  <Route path="/btn" element={<Doc/>}/>
+  <Route path="/card" element={<Nurse/>}/>
+  <Route path="/grid" element={<Ward/>}/>
   <Route path="/typo" element={<Typo/>}/>
   <Route path="/text" element={<Text/>}/>
   <Route path="/chart" element={<Chart/>}/>
